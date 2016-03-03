@@ -1,0 +1,17 @@
+# OSX generated files.
+.DS_Store
+
+# OSX thumbnails.
+._*
+
+# Backup files ext.
+*.bkp
+
+# VIM files ext.
+*.swp
+
+# Package Managers.
+composer.phar
+vendor/
+bower_components/
+node_modules/

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Date Cycle Calculator</title>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css">
+<!--
+<link rel="stylesheet" href="node_modules/react-datepicker/dist/react-datepicker.min.css">
+-->
+<style>
+.datepicker__tether-element-attached-top .datepicker__triangle, .datepicker__tether-element-attached-bottom .datepicker__triangle, .datepicker__year-read-view--down-arrow {
+  margin-left: -8px;
+  position: absolute;
+}
+.datepicker__tether-element-attached-top .datepicker__triangle, .datepicker__tether-element-attached-bottom .datepicker__triangle, .datepicker__year-read-view--down-arrow, .datepicker__tether-element-attached-top .datepicker__triangle::before, .datepicker__tether-element-attached-bottom .datepicker__triangle::before, .datepicker__year-read-view--down-arrow::before {
+  box-sizing: content-box;
+  position: absolute;
+  border: 8px solid transparent;
+  height: 0;
+  width: 1px;
+}
+.datepicker__tether-element-attached-top .datepicker__triangle::before, .datepicker__tether-element-attached-bottom .datepicker__triangle::before, .datepicker__year-read-view--down-arrow::before {
+  content: "";
+  z-index: -1;
+  border-width: 8px;
+  left: -8px;
+  border-bottom-color: #aeaeae;
+}
+
+.datepicker__tether-element-attached-top .datepicker__triangle {
+  top: 0;
+  margin-top: -8px;
+}
+.datepicker__tether-element-attached-top .datepicker__triangle, .datepicker__tether-element-attached-top .datepicker__triangle::before {
+  border-top: none;
+  border-bottom-color: #f0f0f0;
+}
+.datepicker__tether-element-attached-top .datepicker__triangle::before {
+  top: -1px;
+  border-bottom-color: #aeaeae;
+}
+
+.datepicker__tether-element-attached-bottom .datepicker__triangle, .datepicker__year-read-view--down-arrow {
+  bottom: 0;
+  margin-bottom: -8px;
+}
+.datepicker__tether-element-attached-bottom .datepicker__triangle, .datepicker__year-read-view--down-arrow, .datepicker__tether-element-attached-bottom .datepicker__triangle::before, .datepicker__year-read-view--down-arrow::before {
+  border-bottom: none;
+  border-top-color: #fff;
+}
+.datepicker__tether-element-attached-bottom .datepicker__triangle::before, .datepicker__year-read-view--down-arrow::before {
+  bottom: -1px;
+  border-top-color: #aeaeae;
+}
+
+.datepicker {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #aeaeae;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+}
+
+.datepicker__triangle {
+  position: absolute;
+  left: 50px;
+}
+
+.datepicker__tether-element-attached-bottom.datepicker__tether-element {
+  margin-top: -20px;
+}
+
+.datepicker__header {
+  text-align: center;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #aeaeae;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding-top: 8px;
+  position: relative;
+}
+
+.datepicker__current-month {
+  margin-top: 0;
+  color: #000;
+  font-weight: bold;
+  font-size: 13px;
+}
+.datepicker__current-month--hasYearDropdown {
+  margin-bottom: 16px;
+}
+
+.datepicker__navigation {
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  width: 0;
+  border: 6px solid transparent;
+}
+.datepicker__navigation--previous {
+  left: 10px;
+  border-right-color: #ccc;
+}
+.datepicker__navigation--previous:hover {
+  border-right-color: #b3b3b3;
+}
+.datepicker__navigation--next {
+  right: 10px;
+  border-left-color: #ccc;
+}
+.datepicker__navigation--next:hover {
+  border-left-color: #b3b3b3;
+}
+.datepicker__navigation--years {
+  position: relative;
+  top: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.datepicker__navigation--years-previous {
+  top: 4px;
+  border-top-color: #ccc;
+}
+.datepicker__navigation--years-previous:hover {
+  border-top-color: #b3b3b3;
+}
+.datepicker__navigation--years-upcoming {
+  top: -4px;
+  border-bottom-color: #ccc;
+}
+.datepicker__navigation--years-upcoming:hover {
+  border-bottom-color: #b3b3b3;
+}
+
+.datepicker__week-day {
+  color: #ccc;
+  display: inline-block;
+  width: 28px;
+  line-height: 24px;
+}
+
+.datepicker__month {
+  margin: 5px;
+  text-align: center;
+}
+
+.datepicker__day {
+  color: #000;
+  display: inline-block;
+  width: 24px;
+  line-height: 24px;
+  text-align: center;
+  margin: 2px;
+  cursor: pointer;
+}
+.datepicker__day:hover {
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+.datepicker__day--today {
+  font-weight: bold;
+}
+.datepicker__day--selected, .datepicker__day--in-range {
+  border-radius: 4px;
+  background-color: #216ba5;
+  color: #fff;
+}
+.datepicker__day--selected:hover, .datepicker__day--in-range:hover {
+  background-color: #1d5d90;
+}
+.datepicker__day--disabled {
+  cursor: default;
+  color: #ccc;
+}
+.datepicker__day--disabled:hover {
+  background-color: transparent;
+}
+
+.datepicker__input-container {
+  position: relative;
+}
+</style>
+</head>
+<body>
+<h1>Date Cycle Calculator</h1>
+<div id="main"></div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="node_modules/react-datepicker/dist/react-datepicker.min.js"></script>
+<script src="build/form.js"></script>
+</body>
+</html>
