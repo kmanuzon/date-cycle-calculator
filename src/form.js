@@ -12,6 +12,9 @@ var Report = React.createClass({
         var days = parseInt(data.days);
         var stages = parseInt(data.stages);
         var stageDate;
+
+        if (isNaN(days) || isNaN(stages) || !days || !stages) return report;
+
         for (var i = 0; i < stages; i++) {
             if (i === 0) {
                 // do nothing.
