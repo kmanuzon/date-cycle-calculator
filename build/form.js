@@ -158,7 +158,7 @@ var MainForm = React.createClass({
                     { className: "row" },
                     React.createElement(
                         "div",
-                        { className: "small-3 column" },
+                        { className: "small-5 medium-3 large-2 column" },
                         React.createElement(
                             "label",
                             null,
@@ -171,7 +171,7 @@ var MainForm = React.createClass({
                     ),
                     React.createElement(
                         "div",
-                        { className: "small-2 column" },
+                        { className: "small-3 medium-2 large-1 column" },
                         React.createElement(
                             "label",
                             null,
@@ -187,7 +187,7 @@ var MainForm = React.createClass({
                     ),
                     React.createElement(
                         "div",
-                        { className: "small-2 column" },
+                        { className: "small-4 medium-3 large-2 column end" },
                         React.createElement(
                             "label",
                             null,
@@ -200,11 +200,6 @@ var MainForm = React.createClass({
                                 value: this.state.days
                             })
                         )
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "small-5 column" },
-                        " "
                     )
                 )
             ),

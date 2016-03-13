@@ -111,7 +111,7 @@ var MainForm = React.createClass({
             <div>
                 <form className="form-inline" onSubmit={this.handleSubmit}>
                     <div className="row">
-                        <div className="small-3 column">
+                        <div className="small-5 medium-3 large-2 column">
                             <label>
                                 Start Date
                                 <DatePicker
@@ -120,7 +120,7 @@ var MainForm = React.createClass({
                                 />
                             </label>
                         </div>
-                        <div className="small-2 column">
+                        <div className="small-3 medium-2 large-1 column">
                             <label>
                                 Cycles
                                 <input
@@ -132,7 +132,7 @@ var MainForm = React.createClass({
                                 />
                             </label>
                         </div>
-                        <div className="small-2 column">
+                        <div className="small-4 medium-3 large-2 column end">
                             <label>
                                 Days per cycle
                                 <input
@@ -143,9 +143,6 @@ var MainForm = React.createClass({
                                     value={this.state.days}
                                 />
                             </label>
-                        </div>
-                        <div className="small-5 column">
-                            &nbsp;
                         </div>
                     </div>
                 </form>
