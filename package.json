@@ -1,15 +1,25 @@
 {
   "name": "date-cycle-calculator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Calculate the dates from the start point to the next determined by the amount of intervening days.",
   "main": "index.html",
   "dependencies": {
-    "babel-preset-react": "^6.5.0",
+    "foundation-sites": "^6.2.0",
     "moment": "^2.11.2",
     "react": "^0.14.7",
-    "react-datepicker": "^0.23.2"
+    "react-datepicker": "^0.23.2",
+    "react-dom": "^0.14.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-preset-react": "^6.5.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-iife": "^0.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,10 +27,10 @@
     "type": "git",
     "url": "git+https://github.com/progknife/date-cycle-calculator.git"
   },
-  "author": "",
+  "author": "Karl Manuzon",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/progknife/date-cycle-calculator/issues"
   },
-  "homepage": "https://github.com/progknife/date-cycle-calculator#readme"
+  "homepage": "https://github.com/progknife/date-cycle-calculator#date-cycle-calculator"
 }
