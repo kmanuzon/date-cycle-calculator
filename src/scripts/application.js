@@ -1,9 +1,15 @@
 var Application = React.createClass({
+    propTypes: function() {
+        // js dependencies.
+        urijs: React.PropTypes.object.isRequired
+    },
     getInitialState: function() {
+        // try to incorporate url data to app.
+        var params = this.props.urijs.search(true);
         return {
-            startDate: moment(),
-            cycles: 1,
-            days: 32
+            startDate: moment(params['start-date']),
+            cycles: parseInt(params.cycles) || 1,
+            days: parseInt(params.days) || 32
         };
     },
     render: function() {
@@ -21,10 +27,18 @@ var Application = React.createClass({
         );
     },
     handleFormOnChange: function(value) {
+        // update view.
         this.setState(value);
+
+        // save current state to url.
+        var params = {};
+        params['start-date'] = value.startDate.format('YYYY-MM-DD');
+        params.cycles = value.cycles;
+        params.days = value.days;
+        window.history.replaceState({}, '', this.props.urijs.search(params).toString());
     }
 });
 ReactDOM.render(
-    React.createElement(Application),
+    React.createElement(Application, {urijs: new URI()}),
     document.getElementById('application')
 );

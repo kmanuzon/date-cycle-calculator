@@ -1,14 +1,15 @@
 {
   "name": "date-cycle-calculator",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Calculate the dates from the start point to the next determined by the amount of intervening days.",
   "main": "index.html",
   "dependencies": {
     "foundation-sites": "^6.2.0",
     "moment": "^2.11.2",
     "react": "^0.14.7",
-    "react-datepicker": "^0.23.2",
-    "react-dom": "^0.14.7"
+    "react-datepicker": "^0.24.0",
+    "react-dom": "^0.14.7",
+    "urijs": "^1.17.1"
   },
   "devDependencies": {
     "babel-preset-react": "^6.5.0",

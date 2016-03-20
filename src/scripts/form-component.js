@@ -12,6 +12,7 @@ var FormComponent = React.createClass({
                             React.createElement(DatePicker, {
                                 selected: this.props.value.startDate,
                                 onChange: this.handleDateOnChange,
+                                dateFormat: 'YYYY-MM-DD',
                                 popoverAttachment: 'bottom left',
                                 popoverTargetAttachment: 'top left',
                                 popoverTargetOffset: '10px 0px'
