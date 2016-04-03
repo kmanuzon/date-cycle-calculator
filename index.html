@@ -8,11 +8,12 @@
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-74989192-1', 'auto');
-ga('require', 'urlChangeTracker');
 ga('send', 'pageview');
+window.setInterval(function() {
+    ga('send', 'event', 'Page', 'exposure', 'Exposure Time in Page', 10);
+}, 10000);
 </script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/0.6.3/autotrack.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.0/foundation.min.css">
 <link rel="stylesheet" href="https://gitcdn.xyz/repo/progknife/date-cycle-calculator/master/dist/style.min.css">
 </head>
